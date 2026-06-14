@@ -139,14 +139,14 @@ export const LabTestShow = () => {
               <Field
                 label="Date of Birth"
                 value={
-                  record?.date_of_birth
-                    ? dayjs(record.date_of_birth).format("DD MMM YYYY")
+                  record?.patient_dob || record?.date_of_birth
+                    ? dayjs(record?.patient_dob || record?.date_of_birth).format("DD MMM YYYY")
                     : null
                 }
               />
-              <Field label="Sex" value={record?.sex} />
-              <Field label="MRN" value={record?.mrn} mono />
-              <Field label="Ethnicity" value={record?.ethnicity} />
+              <Field label="Sex" value={record?.patient_sex || record?.sex} />
+              <Field label="MRN" value={record?.id_number} mono />
+              <Field label="Ethnicity" value={record?.patient_ethnicity || record?.ethnicity} />
               <Field label="Age Group" value={record?.patient_age_group} />
               <Field
                 label="Super Population"
@@ -266,15 +266,15 @@ export const LabTestShow = () => {
               <Field label="Sample File" value={record?.sample_file} />
               <Field
                 label="Specimen Collected From"
-                value={record?.specimen_collected_from}
+                value={record?.requester}
               />
               <Field label="Specimen Type" value={record?.specimen_type} />
               <Field label="Specimen ID" value={record?.specimen_id} mono />
               <Field
                 label="Specimen Received"
                 value={
-                  record?.specimen_received
-                    ? dayjs(record.specimen_received).format("DD MMM YYYY")
+                  record?.sample_received_date
+                    ? dayjs(record.sample_received_date).format("DD MMM YYYY")
                     : null
                 }
               />
@@ -282,13 +282,13 @@ export const LabTestShow = () => {
           </Card>
         </div>
 
-        {/* mirLung Dx Results */}
+        {/* Wardayahealth Results */}
         {(record?.mirlung_score !== null && record?.mirlung_score !== undefined) && (
           <Card>
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-semibold flex items-center gap-2">
                 <HeartPulse className="h-4 w-4 text-[hsl(var(--primary))]" />
-                mirLung Dx Results
+                Wardayahealth Results
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-0">

@@ -29,6 +29,8 @@ export interface LabTestData {
   drugGroupId?: string;
   clinicalNotes?: string;
   reviewerName?: string;
+  testInformation?: string;
+  labResultSummary?: string;
 
   // Sample & Specimen Information
   sampleReferenceNumber?: string;

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TrendingUp } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import {
   LineChart,
   Line,
@@ -57,6 +56,7 @@ export const PatientTrendTab: React.FC<Props> = ({ record }) => {
 
         setTrendData(points);
       } catch {
+        setTrendData([]);
       } finally {
         setLoading(false);
       }
@@ -143,7 +143,7 @@ export const PatientTrendTab: React.FC<Props> = ({ record }) => {
               <XAxis dataKey="date" tick={{ fontSize: 11 }} />
               <YAxis domain={[0, 100]} tick={{ fontSize: 11 }} />
               <Tooltip
-                formatter={(value: number) => [`${Math.round(value)}%`, "Risk Score"]}
+                formatter={(value) => [`${Math.round(Number(value ?? 0))}%`, "Risk Score"]}
                 labelFormatter={(label) => `Date: ${label}`}
               />
               <ReferenceLine y={65} stroke="#ef4444" strokeDasharray="3 3" label={{ value: "High Risk", fontSize: 10, fill: "#ef4444" }} />

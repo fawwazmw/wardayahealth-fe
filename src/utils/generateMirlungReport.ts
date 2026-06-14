@@ -1,7 +1,7 @@
 import { PDFDocument, rgb, StandardFonts, type PDFPage, type PDFFont } from "pdf-lib";
 
 /**
- * mirLung Dx Medical Report Generator
+ * Wardayahealth Medical Report Generator
  * Generates a PDF matching the GE002 Medical Report template.
  */
 
@@ -25,7 +25,7 @@ const BLACK = rgb(0, 0, 0);
 const WHITE = rgb(1, 1, 1);
 const GRAY = rgb(0.45, 0.45, 0.45);
 const LIGHT_GRAY = rgb(0.92, 0.92, 0.92);
-const TEAL = rgb(0.1, 0.6, 0.48); // Averywell brand
+const TEAL = rgb(0.11, 0.67, 0.58); // Wardayahealth brand
 const RED = rgb(0.8, 0.1, 0.1);
 const GREEN = rgb(0.1, 0.55, 0.25);
 const DARK_BG = rgb(0.12, 0.14, 0.18);
@@ -157,7 +157,7 @@ export async function generateMirlungReport(data: MirlungReportData): Promise<Bl
 
   drawText("Test Assay", MARGIN_L, y, { size: labelSize, color: GRAY });
   y -= 12;
-  drawText("mirLung Dx\u2122 \u2013 Lung Nodule Risk Stratification", MARGIN_L, y, {
+  drawText("Wardayahealth Risk Panel\u2122 \u2013 Lung Nodule Risk Stratification", MARGIN_L, y, {
     font: fontBold,
     size: 10,
   });
@@ -174,7 +174,7 @@ export async function generateMirlungReport(data: MirlungReportData): Promise<Bl
   y -= 20;
 
   // Score display
-  drawText("mirLung Dx\u2122 integrated risk", MARGIN_L, y, {
+  drawText("Wardayahealth Risk Panel\u2122 integrated risk", MARGIN_L, y, {
     size: 10,
   });
   y -= 22;
@@ -251,7 +251,7 @@ export async function generateMirlungReport(data: MirlungReportData): Promise<Bl
   });
 
   const lowRec1 = wrapTextLines(
-    "mirLung Dx to be repeated periodically (e.g., annually) to monitor biological changes.",
+    "Wardayahealth Risk Panel to be repeated periodically (e.g., annually) to monitor biological changes.",
     fontReg,
     7,
     colW1 - 12
@@ -259,7 +259,7 @@ export async function generateMirlungReport(data: MirlungReportData): Promise<Bl
   drawWrapped(page, lowRec1, tableX + colW0 + 6, y - 10, fontReg, 7, 9);
 
   const lowRec2 = wrapTextLines(
-    "Longer LDCT surveillance as per nodule guidelines with mirLung Dx repeat testing (e.g., every 6 months).",
+    "Longer LDCT surveillance as per nodule guidelines with Wardayahealth Risk Panel repeat testing (e.g., every 6 months).",
     fontReg,
     7,
     colW2 - 12
@@ -267,7 +267,7 @@ export async function generateMirlungReport(data: MirlungReportData): Promise<Bl
   drawWrapped(page, lowRec2, tableX + colW0 + colW1 + 6, y - 10, fontReg, 7, 9);
 
   const lowRec3 = wrapTextLines(
-    "Interval LDCT surveillance as per nodule guidelines with mirLung Dx repeat testing (e.g., every 6 months).",
+    "Interval LDCT surveillance as per nodule guidelines with Wardayahealth Risk Panel repeat testing (e.g., every 6 months).",
     fontReg,
     7,
     colW3 - 12
@@ -296,7 +296,7 @@ export async function generateMirlungReport(data: MirlungReportData): Promise<Bl
   });
 
   const highRec1 = wrapTextLines(
-    "Interval LDCT surveillance as per nodule guidelines with mirLung Dx repeat testing (e.g., every 6 months).",
+    "Interval LDCT surveillance as per nodule guidelines with Wardayahealth Risk Panel repeat testing (e.g., every 6 months).",
     fontReg,
     7,
     colW1 - 12
@@ -304,7 +304,7 @@ export async function generateMirlungReport(data: MirlungReportData): Promise<Bl
   drawWrapped(page, highRec1, tableX + colW0 + 6, y - 10, fontReg, 7, 9);
 
   const highRec2 = wrapTextLines(
-    "Shorter interval (e.g., 3 months) for LDCT surveillance as per nodule guidelines with mirLung Dx repeat testing.",
+    "Shorter interval (e.g., 3 months) for LDCT surveillance as per nodule guidelines with Wardayahealth Risk Panel repeat testing.",
     fontReg,
     7,
     colW2 - 12
@@ -371,8 +371,8 @@ export async function generateMirlungReport(data: MirlungReportData): Promise<Bl
   y -= 14;
 
   const interpretationText = isHigh
-    ? "The mirLung Dx\u2122 result indicates a high probability of molecular expression patterns associated with lung malignancy. Correlation with histopathological findings and/or PET imaging, together with comprehensive clinical evaluation, is recommended for confirmatory assessment. This result should be interpreted in conjunction with clinical and radiological findings and is not intended to replace histopathological diagnosis."
-    : "The mirLung Dx\u2122 result indicates a low probability of molecular expression patterns associated with lung malignancy. Continued surveillance as per clinical guidelines is recommended. This result should be interpreted in conjunction with clinical and radiological findings and is not intended to replace histopathological diagnosis.";
+    ? "The Wardayahealth Risk Panel\u2122 result indicates a high probability of molecular expression patterns associated with lung malignancy. Correlation with histopathological findings and/or PET imaging, together with comprehensive clinical evaluation, is recommended for confirmatory assessment. This result should be interpreted in conjunction with clinical and radiological findings and is not intended to replace histopathological diagnosis."
+    : "The Wardayahealth Risk Panel\u2122 result indicates a low probability of molecular expression patterns associated with lung malignancy. Continued surveillance as per clinical guidelines is recommended. This result should be interpreted in conjunction with clinical and radiological findings and is not intended to replace histopathological diagnosis.";
 
   const interpLines = wrapTextLines(interpretationText, fontReg, 8.5, CONTENT_W);
   drawWrapped(page, interpLines, MARGIN_L, y, fontReg, 8.5, 12);
@@ -382,7 +382,7 @@ export async function generateMirlungReport(data: MirlungReportData): Promise<Bl
   const footerY = MARGIN_B - 10;
   drawLine(MARGIN_L, footerY + 15, PAGE_W - MARGIN_R, footerY + 15, 0.5);
   drawText(
-    "Averywell Limited | Precision Health. Empowered by miRNA.",
+    "Wardayahealth | Connected care. Confident decisions.",
     MARGIN_L,
     footerY,
     { size: 7, color: GRAY }

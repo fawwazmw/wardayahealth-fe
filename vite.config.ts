@@ -14,7 +14,7 @@ export default defineConfig({
   server: {
     host: true,
     port: 6173,
-    allowedHosts: ['development.wardaya.my.id', 'averywell-staging.wardaya.my.id', 'ai.medmap.sg'],
+    allowedHosts: ['development.wardaya.my.id', 'wardayahealth-staging.wardaya.my.id', 'ai.medmap.sg'],
     proxy: {
       '/api': {
         target: 'http://localhost:6333',

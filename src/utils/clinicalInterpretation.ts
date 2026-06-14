@@ -1,7 +1,7 @@
 /**
  * Clinical Interpretation Engine
  * Auto-generates clinical interpretation text and recommendations
- * based on mirLung Dx score, risk category, and patient context.
+ * based on the Wardayahealth risk score, risk category, and patient context.
  */
 
 export interface InterpretationInput {
@@ -23,7 +23,7 @@ export interface ClinicalInterpretation {
 }
 
 /**
- * Generate a complete clinical interpretation from mirLung Dx results.
+ * Generate a complete clinical interpretation from Wardayahealth results.
  */
 export function generateInterpretation(
   input: InterpretationInput
@@ -33,13 +33,13 @@ export function generateInterpretation(
 
   // --- Summary ---
   const summary = isHigh
-    ? `mirLung Dx\u2122 integrated risk score of ${mirlungScore.toFixed(2)}% indicates HIGH RISK for lung malignancy.`
-    : `mirLung Dx\u2122 integrated risk score of ${mirlungScore.toFixed(2)}% indicates LOW RISK for lung malignancy.`;
+    ? `Wardayahealth Risk Panel score of ${mirlungScore.toFixed(2)}% indicates HIGH RISK for lung malignancy.`
+    : `Wardayahealth Risk Panel score of ${mirlungScore.toFixed(2)}% indicates LOW RISK for lung malignancy.`;
 
   // --- Interpretation ---
   const interpretation = isHigh
-    ? "The mirLung Dx\u2122 result indicates a high probability of molecular expression patterns associated with lung malignancy. Correlation with histopathological findings and/or PET imaging, together with comprehensive clinical evaluation, is recommended for confirmatory assessment. This result should be interpreted in conjunction with clinical and radiological findings and is not intended to replace histopathological diagnosis."
-    : "The mirLung Dx\u2122 result indicates a low probability of molecular expression patterns associated with lung malignancy. Continued surveillance as per clinical guidelines is recommended. This result should be interpreted in conjunction with clinical and radiological findings and is not intended to replace histopathological diagnosis.";
+    ? "The Wardayahealth Risk Panel result indicates a high probability of molecular expression patterns associated with lung malignancy. Correlation with histopathological findings and/or PET imaging, together with comprehensive clinical evaluation, is recommended for confirmatory assessment. This result should be interpreted in conjunction with clinical and radiological findings and is not intended to replace histopathological diagnosis."
+    : "The Wardayahealth Risk Panel result indicates a low probability of molecular expression patterns associated with lung malignancy. Continued surveillance as per clinical guidelines is recommended. This result should be interpreted in conjunction with clinical and radiological findings and is not intended to replace histopathological diagnosis.";
 
   // --- Recommendations based on risk + nodule size ---
   const recommendations: string[] = [];
@@ -57,14 +57,14 @@ export function generateInterpretation(
         "Shorter interval (e.g., 3 months) for LDCT surveillance as per nodule guidelines."
       );
       recommendations.push(
-        "mirLung Dx\u2122 repeat testing (e.g., every 6 months) to monitor biological changes."
+        "Wardayahealth Risk Panel repeat testing (e.g., every 6 months) to monitor biological changes."
       );
     } else {
       recommendations.push(
         "Interval LDCT surveillance as per nodule guidelines."
       );
       recommendations.push(
-        "mirLung Dx\u2122 repeat testing (e.g., every 6 months) to monitor biological changes."
+        "Wardayahealth Risk Panel repeat testing (e.g., every 6 months) to monitor biological changes."
       );
     }
   } else {
@@ -73,18 +73,18 @@ export function generateInterpretation(
         "Interval LDCT surveillance as per nodule guidelines."
       );
       recommendations.push(
-        "mirLung Dx\u2122 repeat testing (e.g., every 6 months) to monitor biological changes."
+        "Wardayahealth Risk Panel repeat testing (e.g., every 6 months) to monitor biological changes."
       );
     } else if (noduleSizeMm && noduleSizeMm >= 6) {
       recommendations.push(
         "Longer LDCT surveillance as per nodule guidelines."
       );
       recommendations.push(
-        "mirLung Dx\u2122 repeat testing (e.g., every 6 months) to monitor biological changes."
+        "Wardayahealth Risk Panel repeat testing (e.g., every 6 months) to monitor biological changes."
       );
     } else {
       recommendations.push(
-        "mirLung Dx\u2122 to be repeated periodically (e.g., annually) to monitor biological changes."
+        "Wardayahealth Risk Panel to be repeated periodically (e.g., annually) to monitor biological changes."
       );
       recommendations.push(
         "Continue routine clinical follow-up."
@@ -114,13 +114,13 @@ export function generateInterpretation(
     additionalTests.push("Pulmonary function tests");
   } else {
     additionalTests.push("Follow-up LDCT");
-    additionalTests.push("mirLung Dx\u2122 repeat testing");
+    additionalTests.push("Wardayahealth Risk Panel repeat testing");
   }
 
   // --- Risk factors ---
   const riskFactors: string[] = [];
   if (mirlungScore >= 50) {
-    riskFactors.push(`Elevated mirLung Dx\u2122 score (${mirlungScore.toFixed(2)}%)`);
+    riskFactors.push(`Elevated Wardayahealth Risk Panel score (${mirlungScore.toFixed(2)}%)`);
   }
   if (patientAge && patientAge >= 55) {
     riskFactors.push(`Age ${patientAge} (elevated risk age group)`);

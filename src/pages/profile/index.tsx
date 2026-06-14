@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useGetIdentity } from "@refinedev/core";
 import { App } from "antd";
 import { User, Lock, Save, Shield, Mail } from "lucide-react";
@@ -21,7 +21,7 @@ export const ProfileSettings: React.FC = () => {
   const { message } = App.useApp();
   const { data: user } = useGetIdentity<UserIdentity>();
 
-  const [fullName, setFullName] = useState("");
+  const [fullNameDraft, setFullNameDraft] = useState<string | null>(null);
   const [savingName, setSavingName] = useState(false);
 
   const [currentPassword, setCurrentPassword] = useState("");
@@ -29,9 +29,7 @@ export const ProfileSettings: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [savingPassword, setSavingPassword] = useState(false);
 
-  useEffect(() => {
-    if (user?.fullName) setFullName(user.fullName);
-  }, [user?.fullName]);
+  const fullName = fullNameDraft ?? user?.fullName ?? "";
 
   const handleUpdateName = async () => {
     if (!fullName.trim()) {
@@ -147,7 +145,7 @@ export const ProfileSettings: React.FC = () => {
               <Input
                 id="fullName"
                 value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
+                onChange={(e) => setFullNameDraft(e.target.value)}
                 placeholder="Enter your full name"
                 className="flex-1"
               />

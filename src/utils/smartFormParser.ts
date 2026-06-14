@@ -2,7 +2,7 @@
 /**
  * Smart Form Parser - Document Intelligence
  * Extracts structured patient data from OCR text using pattern matching.
- * Designed to parse the Averywell Patient Request Form (GE002 format).
+ * Designed to parse the Wardayahealth Patient Request Form (GE002 format).
  */
 
 export interface ParsedPatientData {

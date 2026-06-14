@@ -1,51 +1,43 @@
-# Averywell Frontend
+# Wardayahealth Frontend
 
-A modern, responsive web application for the Averywell Clinics medical and clinical report management system built with React, TypeScript, and Vite.
+React frontend for the Wardayahealth clinical diagnostics dashboard.
 
-## 🌟 Features
+## Stack
 
-- **Medical Dashboard** - Comprehensive clinic management interface
-- **Report Management** - Create, view, and manage clinical reports
-- **Patient Management** - Track patient information and medical history
-- **Real-time Updates** - Seamless data synchronization with backend API
-- **Responsive Design** - Works on desktop and tablet devices
-- **Modern UI Components** - Built with Ant Design for professional aesthetics
-- **Type-Safe** - Full TypeScript support for reliability
-- **Fast Development** - Vite for rapid development and hot module replacement
+- React
+- TypeScript
+- Vite
+- Refine
+- Ant Design
+- Tailwind CSS
+- Recharts
+- `@react-three/fiber` for the nodule viewer
 
-## 🏗️ Tech Stack
+## Runs On
 
-- **Framework**: React 18.3+ with TypeScript
-- **Build Tool**: Vite 8.0+
-- **UI Library**: Ant Design 5.29+
-- **Admin Panel**: Refine Admin Framework
-- **HTTP Client**: Axios
-- **Routing**: React Router 7.13+
-- **Styling**: Tailwind CSS 4.2+
-- **Date/Time**: Day.js & Moment.js
-- **PDF Export**: PDFMake
+- Default dev URL: `http://localhost:6173`
+- API base in development: proxied from `/api` to `http://localhost:6333`
 
-## 📋 Prerequisites
+If port `6173` is already taken, Vite uses the next available port.
 
-- Node.js v16+ (LTS recommended)
-- npm or pnpm
-- Backend API running (default: `http://localhost:6333`)
+## Setup
 
-## 🚀 Getting Started
-
-### 1. Install Dependencies
+### 1. Install
 
 ```bash
 npm install
 ```
 
-### 2. Environment Configuration
+### 2. Environment
 
-Create or update `.env` file:
+```bash
+cp .env.example .env
+```
+
+Default:
 
 ```env
 VITE_API_URL=/api/v1
-VITE_API_TIMEOUT=30000
 ```
 
 ### 3. Start Development Server
@@ -54,174 +46,66 @@ VITE_API_TIMEOUT=30000
 npm run dev
 ```
 
-The application will be available at `http://localhost:6173` (or the next available port)
-
-### 4. Build for Production
+### 4. Validate
 
 ```bash
+npm run lint
+npm test
 npm run build
 ```
 
-Production files will be generated in the `dist/` directory.
+## Main UI Flows
 
-### 5. Preview Production Build
+- Login and role-based access
+- Dashboard overview
+- Manual test order creation
+- OCR-assisted scan document intake
+- Patient match or create within test-order flow
+- Results detail and trend views
+- Approximate 3D nodule visualization
+- Profile management
+
+## Key Notes
+
+- The main workflow does not depend on a visible Patients section in navigation.
+- Patient data is still reused through test-order creation and OCR intake.
+- Browser title branding is controlled in `src/App.tsx`.
+- API auth token is stored in local storage and attached via `src/providers/authProvider.ts`.
+
+## Useful Commands
 
 ```bash
+npm run dev
+npm run lint
+npm test
+npm run build
 npm run preview
 ```
 
-## 📜 Available Scripts
+## Important Files
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server with HMR |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build locally |
-| `npm run lint` | Run ESLint to check code quality |
+- `src/App.tsx` - routes, Refine config, document title handling
+- `src/components/CustomLayout.tsx` - shell and navigation
+- `src/pages/clinicalDiagnostics/create.tsx` - manual test-order flow
+- `src/pages/clinicalDiagnostics/scan-document.tsx` - OCR-assisted intake flow
+- `src/pages/clinicalDiagnostics/show.tsx` - clinical diagnostic detail rendering
+- `src/pages/results/` - result views and tabs
+- `src/components/NoduleViewer3D.tsx` - 3D nodule visualization
 
-## 📁 Project Structure
+## Demo Flow
 
-```
-averywell-frontend/
-├── src/
-│   ├── App.tsx                 # Main application component
-│   ├── App.css                 # Global styles
-│   ├── index.css               # CSS variables and global styles
-│   ├── main.tsx                # Entry point
-│   ├── assets/                 # Static assets (images, icons)
-│   ├── pages/                  # Page components
-│   │   ├── Dashboard.tsx       # Main dashboard
-│   │   ├── Reports.tsx         # Reports management
-│   │   └── ...
-│   └── providers/              # Context providers and configuration
-├── public/                     # Static files
-├── package.json                # Dependencies and scripts
-├── tsconfig.json               # TypeScript configuration
-├── vite.config.ts              # Vite configuration
-└── index.html                  # HTML entry point
-```
+1. Log in with a seeded backend account
+2. Open `Test Orders`
+3. Create a manual order or use `Scan Document`
+4. Confirm patient matching or creation works
+5. Open the result detail page
+6. Review metadata, imaging, trends, and the viewer
 
-## 🔌 API Integration
+## Known Non-Blockers
 
-The application communicates with the Averywell Backend API:
+- Production build warns about a large frontend chunk
+- The ML service health endpoint can be offline if the separate prediction service is not running
 
-### Base Configuration
-
-- **API URL**: Configured via `VITE_API_URL` environment variable
-- **Default Port**: 6333
-- **Base Path**: `/api/v1`
-
-### Authentication
-
-All API requests include the authorization token in the header:
-
-```
-Authorization: Bearer {access_token}
-```
-
-Token is automatically managed and attached to requests via Axios interceptors.
-
-### Example API Endpoints
-
-- **Login**: `POST /api/v1/auth/login`
-- **Logout**: `POST /api/v1/auth/logout`
-- **Profile**: `GET /api/v1/account/profile`
-- **Reports**: `GET/POST /api/v1/reports`
-
-## 🎨 UI Components
-
-Components are built using Ant Design (antd) and Refine Admin components for consistency and professional appearance.
-
-### Common Components
-
-- **Tables**: Data display with pagination, sorting, and filtering
-- **Forms**: Input validation and submission handling
-- **Modals**: Dialog boxes for confirmations and data entry
-- **Notifications**: Toast messages for user feedback
-- **Layouts**: Header, Sidebar, and Content area
-
-## 🚦 Development Workflow
-
-1. **Create Feature Branch**
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-2. **Make Changes**
-   - Develop new features or fix bugs
-   - Keep changes atomic and focused
-
-3. **Check Code Quality**
-   ```bash
-   npm run lint
-   ```
-
-4. **Build and Test**
-   ```bash
-   npm run build
-   ```
-
-5. **Commit and Push**
-   ```bash
-   git add .
-   git commit -m "Description of changes"
-   git push origin feature/your-feature-name
-   ```
-
-6. **Create Pull Request**
-   - Describe changes and improvements
-   - Link related issues if applicable
-
-## 🔧 Configuration
-
-### Vite Configuration
-
-Configuration is in `vite.config.ts`:
-
-- React plugin with Oxc
-- Tailwind CSS integration
-- Development server settings
-- Build optimization
-
-### TypeScript Configuration
-
-Multiple TypeScript configs for different contexts:
-
-- `tsconfig.json` - Base configuration
-- `tsconfig.app.json` - Application-specific settings
-- `tsconfig.node.json` - Build tool configuration
-
-## 📚 Resources
-
-- [React Documentation](https://react.dev)
-- [Vite Guide](https://vitejs.dev)
-- [TypeScript Handbook](https://www.typescriptlang.org/docs)
-- [Ant Design Components](https://ant.design/components/overview)
-- [Refine Documentation](https://refine.dev)
-- [Tailwind CSS](https://tailwindcss.com)
-
-## 🤝 Contributing
-
-When contributing to the frontend:
-
-1. Follow the existing code style
-2. Write clean, maintainable code
-3. Use TypeScript for type safety
-4. Test your changes thoroughly
-5. Run linter before committing
-6. Write meaningful commit messages
-
-## 📝 Notes
-
-- HMR (Hot Module Replacement) is enabled for fast development
-- CSS is scoped using component files
-- Ant Design dark mode can be enabled via theme configuration
-- PDF export functionality is available for reports
-
-## 📄 License
+## License
 
 MIT
-
----
-
-**Averywell Clinics** - Medical & Clinical Report Management System

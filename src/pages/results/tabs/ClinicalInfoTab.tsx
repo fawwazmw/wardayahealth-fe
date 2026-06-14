@@ -1,6 +1,6 @@
 import React from "react";
 import dayjs from "dayjs";
-import { User, Stethoscope, Cigarette, HeartPulse } from "lucide-react";
+import { User, Stethoscope, HeartPulse } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 

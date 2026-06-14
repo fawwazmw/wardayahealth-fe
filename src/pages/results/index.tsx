@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
 import { axiosInstance } from "@/providers/authProvider";
 
 interface ResultItem {
@@ -38,6 +37,7 @@ export const ResultsPage: React.FC = () => {
         const all = res.data as ResultItem[];
         setResults(all.filter((r) => r.mirlung_score != null));
       } catch {
+        setResults([]);
       } finally {
         setLoading(false);
       }

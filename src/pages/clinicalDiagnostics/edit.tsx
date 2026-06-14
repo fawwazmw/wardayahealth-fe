@@ -44,7 +44,7 @@ export const LabTestEdit: React.FC = () => {
                 </Form.Item>
                 <Form.Item
                   label="Date of Birth"
-                  name="date_of_birth"
+                  name="patient_dob"
                   rules={[
                     { required: true, message: "Specimen Date is required" },
                   ]}
@@ -63,7 +63,7 @@ export const LabTestEdit: React.FC = () => {
                 </Form.Item>
                 <Form.Item
                   label="Sex"
-                  name="sex"
+                  name="patient_sex"
                   rules={[{ required: true, message: "Sex is required" }]}
                 >
                   <Select
@@ -92,7 +92,7 @@ export const LabTestEdit: React.FC = () => {
                 </Form.Item>
                 <Form.Item
                   label="Ethnicity"
-                  name="ethnicity"
+                  name="patient_ethnicity"
                   rules={[
                     { required: true, message: "Ethnicity is required" },
                   ]}
@@ -113,14 +113,14 @@ export const LabTestEdit: React.FC = () => {
               <CardContent className="pt-0 space-y-1">
                 <Form.Item
                   label="MRN"
-                  name="mrn"
+                  name="id_number"
                   rules={[{ required: true, message: "MRN is required" }]}
                 >
                   <Input placeholder="MRN" />
                 </Form.Item>
                 <Form.Item
                   label="Specimen Collected From"
-                  name="specimen_collected_from"
+                  name="requester"
                   rules={[
                     {
                       required: true,
@@ -150,7 +150,7 @@ export const LabTestEdit: React.FC = () => {
                 </Form.Item>
                 <Form.Item
                   label="Specimen Date"
-                  name="specimen_received"
+                  name="sample_received_date"
                   rules={[
                     { required: true, message: "Specimen Date is required" },
                   ]}

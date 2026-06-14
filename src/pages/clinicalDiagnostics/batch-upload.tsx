@@ -388,11 +388,11 @@ export const BatchUpload: React.FC = () => {
             Back to Clinical Diagnostics
           </button>
           <h1 className="text-xl font-bold text-[hsl(var(--foreground))]">
-            Batch Upload -- mirLung Dx
+            Batch Upload - Wardayahealth Risk Panel
           </h1>
           <p className="text-sm text-[hsl(var(--muted-foreground))] mt-0.5">
             Upload a QuantStudio XLSX export to process qPCR results and
-            calculate mirLung Dx risk scores.
+            calculate Wardayahealth risk scores.
           </p>
         </div>
       </div>
@@ -564,7 +564,7 @@ export const BatchUpload: React.FC = () => {
                   )}
                 />
                 <Table.Column
-                  title="mirLung Dx Score"
+                  title="Wardayahealth Score"
                   dataIndex="mirlungScore"
                   render={(v: number | null) => (
                     <span className="font-bold text-sm">
@@ -778,7 +778,7 @@ export const BatchUpload: React.FC = () => {
                   Extract Cq values for{" "}
                   {state.samples.reduce((a, s) => a + s.targetCount, 0)} wells
                 </li>
-                <li>Calculate mirLung Dx scores for each sample</li>
+                <li>Calculate Wardayahealth scores for each sample</li>
                 <li>
                   Match samples to existing patient records (by sample
                   reference, test case ID, or patient ID)

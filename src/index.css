@@ -1,41 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @layer base {
   :root {
-    --background: 225 15% 8%;
-    --foreground: 210 40% 92%;
-    --card: 225 15% 11%;
-    --card-foreground: 210 40% 92%;
-    --popover: 225 15% 13%;
-    --popover-foreground: 210 40% 92%;
-    --primary: 330 82% 52%;
+    --background: 166 38% 7%;
+    --foreground: 164 28% 94%;
+    --card: 167 32% 10%;
+    --card-foreground: 164 28% 94%;
+    --popover: 167 30% 12%;
+    --popover-foreground: 164 28% 94%;
+    --primary: 169 61% 48%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 225 15% 15%;
-    --secondary-foreground: 210 40% 80%;
-    --muted: 225 15% 15%;
-    --muted-foreground: 215 15% 55%;
-    --accent: 225 15% 18%;
-    --accent-foreground: 210 40% 92%;
+    --secondary: 166 23% 15%;
+    --secondary-foreground: 164 22% 84%;
+    --muted: 167 22% 15%;
+    --muted-foreground: 164 14% 62%;
+    --accent: 168 21% 18%;
+    --accent-foreground: 164 28% 94%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 225 15% 18%;
-    --input: 225 15% 18%;
-    --ring: 330 82% 52%;
-    --radius: 0.625rem;
-    --chart-1: 330 82% 52%;
-    --chart-2: 199 89% 48%;
-    --chart-3: 45 93% 47%;
+    --border: 167 20% 20%;
+    --input: 167 20% 19%;
+    --ring: 169 61% 48%;
+    --radius: 1rem;
+    --chart-1: 169 61% 48%;
+    --chart-2: 188 72% 56%;
+    --chart-3: 39 73% 66%;
     --chart-4: 0 84% 60%;
-    --chart-5: 262 52% 47%;
+    --chart-5: 146 50% 45%;
 
-    --sidebar-bg: 225 20% 7%;
-    --sidebar-fg: 210 40% 92%;
-    --sidebar-muted: 215 15% 50%;
-    --sidebar-active: 330 82% 52%;
-    --sidebar-border: 225 15% 14%;
-    --sidebar-hover: 225 15% 12%;
-    --sidebar-accent: 330 82% 52%;
-    --sidebar-text: 210 40% 92%;
+    --sidebar-bg: 166 39% 6%;
+    --sidebar-fg: 164 28% 94%;
+    --sidebar-muted: 164 13% 62%;
+    --sidebar-active: 168 35% 17%;
+    --sidebar-border: 167 24% 14%;
+    --sidebar-hover: 167 26% 12%;
+    --sidebar-accent: 169 61% 48%;
+    --sidebar-text: 164 28% 94%;
 
     --success: 142 71% 45%;
     --warning: 38 92% 50%;
@@ -49,11 +50,33 @@
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI",
       "Roboto", "Oxygen", "Ubuntu", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-image:
+      radial-gradient(circle at top left, rgba(64, 194, 168, 0.12), transparent 28%),
+      radial-gradient(circle at 85% 15%, rgba(219, 179, 91, 0.12), transparent 18%),
+      linear-gradient(180deg, rgba(8, 27, 23, 0.98) 0%, rgba(6, 18, 16, 1) 100%);
+    background-attachment: fixed;
   }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: rgba(64, 194, 168, 0.28);
+    color: hsl(var(--foreground));
+  }
+}
+
+h1,
+h2,
+h3,
+.font-brand {
+  font-family: "Fraunces", Georgia, serif;
+  letter-spacing: -0.02em;
 }
 
 .ant-layout {
@@ -62,6 +85,8 @@
 .ant-table-wrapper .ant-table {
   background: hsl(var(--card)) !important;
   border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
 }
 .ant-table-wrapper .ant-table-thead > tr > th {
   background: hsl(var(--muted)) !important;
@@ -90,6 +115,9 @@
 }
 .ant-btn-primary:hover {
   opacity: 0.9;
+}
+.ant-btn {
+  box-shadow: none !important;
 }
 .ant-pagination-item-active {
   border-color: hsl(var(--primary)) !important;
@@ -150,6 +178,8 @@
 .ant-modal-content {
   background: hsl(var(--card)) !important;
   color: hsl(var(--foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32) !important;
 }
 .ant-modal-header {
   background: hsl(var(--card)) !important;
@@ -179,11 +209,11 @@
 
 .leaflet-tooltip-dark {
   background: rgba(0, 0, 0, 0.8) !important;
-  border: 1px solid rgba(233, 30, 140, 0.4) !important;
+  border: 1px solid rgba(64, 194, 168, 0.4) !important;
   color: #fff !important;
   border-radius: 6px !important;
   padding: 4px 8px !important;
-  font-family: "Inter", sans-serif !important;
+  font-family: "Manrope", sans-serif !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
 }
 .leaflet-tooltip-dark::before {
@@ -199,5 +229,5 @@
 }
 .leaflet-control-zoom a:hover {
   background: #2a2f3e !important;
-  color: #e91e8c !important;
+  color: #40c2a8 !important;
 }

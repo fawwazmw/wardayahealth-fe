@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useGetIdentity } from "@refinedev/core";
 import { axiosInstance } from "../../providers/authProvider";
 import {
-  FlaskConical,
+  HeartPulse,
   Clock,
   CheckCircle2,
   TrendingUp,
@@ -53,7 +53,15 @@ const StatCard: React.FC<{
   trend?: string;
   loading?: boolean;
 }> = ({ label, value, icon, iconBg, iconColor, trend, loading }) => (
-  <div className="rounded-xl border p-5 flex flex-col gap-4" style={{ backgroundColor: "hsl(225 15% 11%)", borderColor: "hsl(225 15% 18%)" }}>
+  <div
+    className="flex flex-col gap-4 rounded-[24px] border p-5"
+    style={{
+      backgroundColor: "rgba(15, 29, 26, 0.78)",
+      borderColor: "hsl(var(--border))",
+      boxShadow: "0 18px 48px rgba(0, 0, 0, 0.14)",
+      backdropFilter: "blur(12px)",
+    }}
+  >
     <div className="flex items-center justify-between">
       <span className="text-sm font-medium text-[hsl(var(--muted-foreground))]">{label}</span>
       <div
@@ -104,7 +112,7 @@ export const Dashboard: React.FC = () => {
         }
       } catch {
         if (!cancelled) {
-          setError("Unable to load dashboard data.");
+          setError("Unable to load Wardayahealth dashboard data.");
         }
       } finally {
         if (!cancelled) {
@@ -136,7 +144,7 @@ export const Dashboard: React.FC = () => {
           {greeting}{user?.fullName ? `, ${user.fullName.split(" ")[0]}` : ""}
         </h1>
         <p className="text-sm text-[hsl(var(--muted-foreground))] mt-1">
-          Here&apos;s what&apos;s happening in your lab today.
+          Here&apos;s what&apos;s happening across your care operations today.
         </p>
       </div>
 
@@ -151,19 +159,19 @@ export const Dashboard: React.FC = () => {
       {/* Stat cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <StatCard
-          label="Total Lab Tests"
+          label="Total Test Orders"
           value={total.toLocaleString()}
-          icon={<FlaskConical size={18} />}
-          iconBg="#fce7f3"
-          iconColor="#be185d"
+          icon={<HeartPulse size={18} />}
+          iconBg="rgba(64,194,168,0.16)"
+          iconColor="#40c2a8"
           loading={loading}
         />
         <StatCard
           label="In Progress"
           value={stats?.inProgress ?? 0}
           icon={<Clock size={18} />}
-          iconBg="#eff6ff"
-          iconColor="#1d4ed8"
+          iconBg="rgba(104, 169, 255, 0.12)"
+          iconColor="#7cb4ff"
           trend={`${stats?.pending ?? 0} pending`}
           loading={loading}
         />
@@ -171,8 +179,8 @@ export const Dashboard: React.FC = () => {
           label="Completed"
           value={completed.toLocaleString()}
           icon={<CheckCircle2 size={18} />}
-          iconBg="#f0fdf4"
-          iconColor="#15803d"
+          iconBg="rgba(47,177,120,0.12)"
+          iconColor="#2fb178"
           trend={`${successRate}% completion rate`}
           loading={loading}
         />
@@ -180,8 +188,8 @@ export const Dashboard: React.FC = () => {
           label="Results Available"
           value={stats?.resultsAvailable ?? 0}
           icon={<Dna size={18} />}
-          iconBg="#faf5ff"
-          iconColor="#7c3aed"
+          iconBg="rgba(215,179,91,0.12)"
+          iconColor="#d7b35b"
           loading={loading}
         />
       </div>
@@ -208,10 +216,17 @@ export const Dashboard: React.FC = () => {
               const totalPatients = country.patientCount;
               const completionPct = totalPatients > 0 ? Math.min(100, Math.round((totalPatients / 50) * 100)) : 0;
               return (
-                <div key={country.id} className="rounded-xl border p-5" style={{ backgroundColor: "hsl(225 15% 11%)", borderColor: "hsl(225 15% 18%)" }}>
+                <div
+                  key={country.id}
+                  className="rounded-[24px] border p-5"
+                  style={{
+                    backgroundColor: "rgba(15, 29, 26, 0.78)",
+                    borderColor: "hsl(var(--border))",
+                  }}
+                >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-mono font-bold px-1.5 py-0.5 rounded" style={{ backgroundColor: "hsl(225 15% 18%)", color: "hsl(var(--muted-foreground))" }}>
+                      <span className="text-xs font-mono font-bold px-1.5 py-0.5 rounded" style={{ backgroundColor: "rgba(255,255,255,0.04)", color: "hsl(var(--muted-foreground))" }}>
                         {country.code}
                       </span>
                       <span className="text-sm font-semibold text-[hsl(var(--foreground))]">{country.name}</span>
@@ -227,12 +242,12 @@ export const Dashboard: React.FC = () => {
                       {totalPatients} patients
                     </span>
                   </div>
-                  <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: "hsl(225 15% 18%)" }}>
+                  <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
                     <div
                       className="h-full rounded-full transition-all"
                       style={{
                         width: `${completionPct}%`,
-                        backgroundColor: "#e91e8c",
+                        backgroundColor: "#40c2a8",
                       }}
                     />
                   </div>
@@ -247,8 +262,8 @@ export const Dashboard: React.FC = () => {
       {/* Content grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Recent activity */}
-        <div className="lg:col-span-2 rounded-xl border" style={{ backgroundColor: "hsl(225 15% 11%)", borderColor: "hsl(225 15% 18%)" }}>
-          <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: "1px solid hsl(225 15% 18%)" }}>
+        <div className="lg:col-span-2 rounded-[24px] border" style={{ backgroundColor: "rgba(15, 29, 26, 0.78)", borderColor: "hsl(var(--border))" }}>
+          <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
             <div className="flex items-center gap-2">
               <Activity size={16} className="text-[hsl(var(--muted-foreground))]" />
               <span className="text-sm font-semibold text-[hsl(var(--foreground))]">Recent Activity</span>
@@ -267,7 +282,7 @@ export const Dashboard: React.FC = () => {
                   <div
                     key={`${item.id}-${i}`}
                     className="flex items-center justify-between px-5 py-3.5"
-                    style={{ borderBottom: i < stats.recentActivity.length - 1 ? "1px solid hsl(225 15% 18%)" : undefined }}
+                    style={{ borderBottom: i < stats.recentActivity.length - 1 ? "1px solid hsl(var(--border))" : undefined }}
                   >
                     <div className="flex items-center gap-3">
                       <div
@@ -275,9 +290,9 @@ export const Dashboard: React.FC = () => {
                         style={{
                           width: 36,
                           height: 36,
-                          backgroundColor: "hsl(225 15% 15%)",
+                          backgroundColor: "rgba(255,255,255,0.04)",
                           color: "hsl(var(--muted-foreground))",
-                          border: "1px solid hsl(225 15% 18%)",
+                          border: "1px solid hsl(var(--border))",
                         }}
                       >
                         {item.id.replace("TC-", "").replace("TC", "").slice(0, 4)}
@@ -311,13 +326,13 @@ export const Dashboard: React.FC = () => {
         </div>
 
         {/* Quick stats */}
-        <div className="rounded-xl border" style={{ backgroundColor: "hsl(225 15% 11%)", borderColor: "hsl(225 15% 18%)" }}>
-          <div className="flex items-center gap-2 px-5 py-4" style={{ borderBottom: "1px solid hsl(225 15% 18%)" }}>
+        <div className="rounded-[24px] border" style={{ backgroundColor: "rgba(15, 29, 26, 0.78)", borderColor: "hsl(var(--border))" }}>
+          <div className="flex items-center gap-2 px-5 py-4" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
             <TrendingUp size={16} className="text-[hsl(var(--muted-foreground))]" />
             <span className="text-sm font-semibold text-[hsl(var(--foreground))]">Quick Stats</span>
           </div>
           <div className="p-5 space-y-5">
-            <div className="flex items-center justify-between py-3" style={{ borderBottom: "1px solid hsl(225 15% 18%)" }}>
+            <div className="flex items-center justify-between py-3" style={{ borderBottom: "1px solid hsl(var(--border))" }}>
               <div className="flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))]">
                 <Timer size={15} />
                 Completion Rate
@@ -326,7 +341,7 @@ export const Dashboard: React.FC = () => {
                 {loading ? "..." : `${successRate}%`}
               </span>
             </div>
-            <div className="flex items-center justify-between py-3 border-b border-[hsl(225_15%_18%)]">
+            <div className="flex items-center justify-between py-3 border-b border-[hsl(var(--border))]">
               <div className="flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))]">
                 <CheckCircle2 size={15} />
                 Results Available
@@ -335,7 +350,7 @@ export const Dashboard: React.FC = () => {
                 {loading ? "..." : stats?.resultsAvailable ?? 0}
               </span>
             </div>
-            <div className="flex items-center justify-between py-3 border-b border-[hsl(225_15%_18%)]">
+            <div className="flex items-center justify-between py-3 border-b border-[hsl(var(--border))]">
               <div className="flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))]">
                 <Dna size={15} />
                 Total Tests
@@ -346,7 +361,7 @@ export const Dashboard: React.FC = () => {
             </div>
             <div className="flex items-center justify-between py-3">
               <div className="flex items-center gap-2 text-sm text-[hsl(var(--muted-foreground))]">
-                <FlaskConical size={15} />
+                <HeartPulse size={15} />
                 Pending Review
               </div>
               <span className="text-sm font-bold" style={{ color: "#1d4ed8" }}>

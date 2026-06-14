@@ -121,7 +121,7 @@ export const TestOrdersPage: React.FC = () => {
 
     const headers = [
       "Patient Name", "Test Case ID", "Physician", "Specimen Type",
-      "Status", "Requester", "mirLung Score", "Risk Category",
+      "Status", "Requester", "Risk Panel Score", "Risk Category",
       "SKH Prediction", "Created At",
     ];
     const keys = [
@@ -183,7 +183,7 @@ export const TestOrdersPage: React.FC = () => {
               Test Orders
             </h1>
             <p className="text-sm text-[hsl(var(--muted-foreground))]">
-              Manage diagnostic test orders and lab results
+              Manage test orders, reuse patient records, and capture new patients inline
             </p>
           </div>
         </div>
@@ -264,7 +264,7 @@ export const TestOrdersPage: React.FC = () => {
               />
               <Table.Column
                 dataIndex="risk_category"
-                title="mirLung Risk"
+                title="Risk Signal"
                 render={(v: string | null) => (
                   v ? <Badge variant={getRiskVariant(v)}>{v}</Badge> : <span className="text-xs text-[hsl(var(--muted-foreground))]">—</span>
                 )}

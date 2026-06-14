@@ -29,6 +29,7 @@ export const PatientsPage: React.FC = () => {
         const res = await axiosInstance.get("/countries");
         setCountries(res.data);
       } catch {
+        setCountries([]);
       } finally {
         setLoading(false);
       }

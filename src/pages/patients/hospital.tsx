@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import dayjs from "dayjs";
 import { ArrowLeft, Users, User, Cigarette, PlusCircle, Search } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { axiosInstance } from "@/providers/authProvider";
 
@@ -37,6 +36,7 @@ export const HospitalPatients: React.FC = () => {
         });
         setPatients(res.data);
       } catch {
+        setPatients([]);
       } finally {
         setLoading(false);
       }
