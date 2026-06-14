@@ -1,0 +1,39 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#667eea"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="128" height="128" rx="24" fill="url(#gradient)"/>
+  
+  <!-- Medical Document/Report -->
+  <rect x="32" y="24" width="64" height="80" rx="4" fill="white" opacity="0.95"/>
+  
+  <!-- Document Lines -->
+  <rect x="42" y="36" width="44" height="3" rx="1.5" fill="#667eea" opacity="0.6"/>
+  <rect x="42" y="46" width="38" height="2" rx="1" fill="#667eea" opacity="0.4"/>
+  <rect x="42" y="52" width="42" height="2" rx="1" fill="#667eea" opacity="0.4"/>
+  
+  <!-- DNA Helix / Medical Symbol -->
+  <circle cx="52" cy="70" r="3" fill="#667eea"/>
+  <circle cx="64" cy="66" r="3" fill="#764ba2"/>
+  <circle cx="76" cy="70" r="3" fill="#667eea"/>
+  <circle cx="64" cy="74" r="3" fill="#764ba2"/>
+  
+  <!-- Connecting lines for DNA -->
+  <path d="M 52 70 Q 58 68 64 66" stroke="#667eea" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <path d="M 64 66 Q 70 68 76 70" stroke="#764ba2" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <path d="M 52 70 Q 58 72 64 74" stroke="#764ba2" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <path d="M 64 74 Q 70 72 76 70" stroke="#667eea" stroke-width="1.5" fill="none" opacity="0.6"/>
+  
+  <!-- Lab Flask at bottom -->
+  <path d="M 56 86 L 60 86 L 62 94 L 54 94 Z" fill="white" opacity="0.8"/>
+  <circle cx="58" cy="88" r="1.5" fill="#667eea"/>
+  
+  <!-- Medical Cross accent -->
+  <rect x="72" y="86" width="2" height="8" rx="1" fill="white" opacity="0.8"/>
+  <rect x="69" y="89" width="8" height="2" rx="1" fill="white" opacity="0.8"/>
+</svg>
