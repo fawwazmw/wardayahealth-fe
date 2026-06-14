@@ -167,8 +167,8 @@ export const LabTestEdit: React.FC = () => {
                     placeholder="Choose date"
                   />
                 </Form.Item>
-                <Form.Item label="Reviewed By" name="reviewer_name">
-                  <Input placeholder="Example: Dr. Ong Kiat Hoe" />
+                <Form.Item label="AI Reviewer" name="reviewer_name">
+                  <Input placeholder="Example: Wardaya AI Reviewer v1" />
                 </Form.Item>
               </CardContent>
             </Card>

@@ -814,10 +814,10 @@ export const ScanDocument: React.FC = () => {
                       </div>
                       <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                         <FormField
-                          label="Reviewed By"
+                          label="AI Reviewer"
                           value={form.reviewerName}
                           onChange={(v) => updateField("reviewerName", v)}
-                          placeholder="Example: Dr. Ong Kiat Hoe"
+                          placeholder="Example: Wardaya AI Reviewer v1"
                         />
                       </div>
                       <div className="grid grid-cols-1 gap-3 md:grid-cols-2">

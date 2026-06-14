@@ -213,7 +213,7 @@ export const LabTestShow = () => {
               <Field label="Panel ID" value={record?.panel_id} />
               <Field label="Drug Group ID" value={record?.drug_group_id} />
               <Field label="Clinical Notes" value={record?.clinical_notes} />
-              <Field label="Reviewer Name" value={record?.reviewer_name} />
+              <Field label="AI Reviewer" value={record?.reviewer_name} />
               <Field
                 label="Test Information"
                 value={record?.test_information}
